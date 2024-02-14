@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../assets/style/style.css";
 import { getDirection } from "../utils/get-directions";
-import { getDayOfWeek } from "../utils/get-time";
 
 export const Weather = () => {
   const [inputValue, setInputValue] = useState("");
@@ -19,30 +18,6 @@ export const Weather = () => {
       .then((response) => response.json())
       .then((data) => {
         setResponseData(data);
-        // const lon = data.cord.lot;
-        // const lat = data.cord.lat;
-        // const forcast = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-
-        // fetch(forcast)
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     setResponseData(data);
-        //     test.textContent += data.message;
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error fetching data:", error);
-        //   });
-
-        // const air_pol = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-
-        // fetch(air_pol)
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     setResponseData(data);
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error fetching data:", error);
-        //   });
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -52,20 +27,27 @@ export const Weather = () => {
   return (
     <section className="">
       <div className="flex flex-col justify-center items-center p-12">
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-4 bg-white rounded shadow-md">
+          <h1 className="text-blue-500 font-semibold text-xl mx-4 mt-4">
+            Weather App
+          </h1>
+          <hr />
           <input
-            className="input"
+            className="w-72 bd rounded border border-gray-500 text-center mx-4 p-2 text-zinc-500"
             type="text"
             value={inputValue}
             onChange={handleInputChange}
             placeholder="Enter a city"
           />
-          <button onClick={handleApiCall} className="button">
+          <button
+            onClick={handleApiCall}
+            className="w-72 bg-blue-400 rounded border border-gray-500 mx-4 mb-4 p-2 text-white"
+          >
             Search
           </button>
         </div>
 
-        <div className="mt-64 text-center mb-40">
+        <div className="mt-64 text-center mb-4">
           {responseData && (
             <>
               <div className="mb-4">
@@ -85,10 +67,10 @@ export const Weather = () => {
           )}
         </div>
 
-        <div className="flex gap-10 flex-col">
+        <div className="">
           {responseData && (
             <>
-              <div className="weather-info p-6 bg-gradient-to-r from-zinc-400 to-zinc-200 rounded-lg shadow-md">
+              <div className="">
                 <p>Pressure: {responseData.main.pressure}mbar</p>
                 <p>Humidity: {responseData.main.humidity}%</p>
                 <p>
@@ -97,7 +79,7 @@ export const Weather = () => {
                 </p>
               </div>
 
-              <div className="polution p-6 bg-gradient-to-r from-zinc-400 to-zinc-200 rounded-lg shadow-md">
+              <div className="">
                 <p>Co2 level: </p>
               </div>
             </>
