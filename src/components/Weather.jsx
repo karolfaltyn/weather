@@ -48,7 +48,7 @@ export const Weather = () => {
         </div>
 
         {responseData && (
-          <div className="mt-64 flex flex-col gap-4 rounded bg-white shadow-md">
+          <div className="mt-32 flex flex-col gap-4 rounded bg-white shadow-md">
             <h1 className="mx-4 mt-4 w-72 text-xl font-semibold text-blue-500">
               Weather App
             </h1>
@@ -90,9 +90,10 @@ export const Weather = () => {
                 <p>Humidity: </p>
               </div>
             </div>
-            <div className="">
-              Wind: {responseData.wind.speed}kmh,{" "}
-              {getDirection(responseData.wind.deg)} direction
+            <hr />
+            <div className="justify mb-4 flex flex-col items-center">
+              Wind {responseData.wind.speed}kmh
+              <p>{getDirection(responseData.wind.deg)} direction</p>
             </div>
           </div>
         )}
