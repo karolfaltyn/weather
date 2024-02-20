@@ -3,6 +3,12 @@ import "../assets/style/style.css";
 import { getDirection } from "../utils/get-directions";
 
 export const Weather = () => {
+  let pin = require("../assets/images/other-icons/bx-map.svg").default;
+  let droplet =
+    require("../assets/images/other-icons/bxs-droplet-half.svg").default;
+  let thermometer =
+    require("../assets/images/other-icons/bxs-thermometer.svg").default;
+
   const [inputValue, setInputValue] = useState("");
   const [responseData, setResponseData] = useState(null);
 
@@ -18,6 +24,7 @@ export const Weather = () => {
       .then((response) => response.json())
       .then((data) => {
         setResponseData(data);
+        console.log(data.weather[0].main);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -29,11 +36,11 @@ export const Weather = () => {
       <div className="flex flex-col items-center justify-center p-12">
         <div className="flex flex-col gap-4 rounded bg-white shadow-md">
           <h1 className="mx-4 mt-4 text-xl font-semibold text-blue-500">
-            Weather App
+            Select Location
           </h1>
           <hr />
           <input
-            className="bd mx-4 w-72 rounded border border-gray-500 p-2 text-center text-zinc-500"
+            className="mx-4 w-72 rounded border border-gray-500 p-2 text-center text-zinc-500 sm:w-48"
             type="text"
             value={inputValue}
             onChange={handleInputChange}
@@ -41,15 +48,15 @@ export const Weather = () => {
           />
           <button
             onClick={handleApiCall}
-            className="mx-4 mb-4 w-72 rounded border border-gray-500 bg-blue-400 p-2 text-white"
+            className="mx-4 mb-4 w-72 rounded border border-gray-500 bg-blue-400 p-2 text-white sm:w-48"
           >
             Search
           </button>
         </div>
 
         {responseData && (
-          <div className="mt-32 flex flex-col gap-4 rounded bg-white shadow-md">
-            <h1 className="mx-4 mt-4 w-72 text-xl font-semibold text-blue-500">
+          <div className="mt-16 flex flex-col gap-4 rounded bg-white shadow-md">
+            <h1 className="mx-4 mt-4 w-72 text-xl font-semibold text-blue-500 sm:w-48">
               Weather App
             </h1>
             <hr />
@@ -59,39 +66,46 @@ export const Weather = () => {
                 {/* <img src="" alt="weather icon" /> */}
                 {responseData.weather.icon}
               </div>
-              <p className="mb-2 text-6xl ">
+              <p className="bold mb-2 text-6xl font-semibold">
                 {Math.round(responseData.main.temp)}°C
               </p>
-              <p className=" text-md font-semibold">
-                {responseData.weather.main}
+              <p className=" text-lg font-semibold">
+                {responseData.weather[0].main}
               </p>
-              <p className="text-md font-semibold">{responseData.name}</p>
-              {/* <p>
-                Min: {Math.round(responseData.main.temp_min)}°C / Max:{" "}
-                {Math.round(responseData.main.temp_max)}°C
-              </p> */}
-              {/* <p>Pressure: {responseData.main.pressure}mbar</p> */}
+              <div className="flex items-center justify-center">
+                <img src={pin} alt="pin" />
+                <p className="text-md font-semibold">{responseData.name}</p>
+              </div>
+              {/* <p className="text-sm">Pressure: {responseData.main.pressure}mbar</p> */}
             </div>
             <hr />
 
             <div className="mx-4 flex justify-evenly">
-              <div className="flex flex-col items-center">
-                {/* <img src="" alt="thermometer" /> */}
-                <p className="text-md font-medium">
-                  {Math.round(responseData.main.feels_like)}°C
-                </p>
-                <p>Feels like </p>
+              <div className="flex items-center justify-center">
+                <img src={thermometer} alt="thermometer" className="w-10" />
+                <div>
+                  <p className="text-md font-medium">
+                    {Math.round(responseData.main.feels_like)}°C
+                  </p>
+                  <p className="text-xs">Feels like </p>
+                </div>
               </div>
+
               <div className="flex flex-col items-center">
-                {/* <img src="" alt="water-drop" /> */}
-                <p className="text-md font-medium">
-                  {responseData.main.humidity}%
-                </p>
-                <p>Humidity: </p>
+                <div className="flex items-center justify-center">
+                  <img src={droplet} alt="droplet" className="w-10" />
+                  <div>
+                    <p className="text-md font-medium">
+                      {responseData.main.humidity}%
+                    </p>
+                    <p className="text-xs">Humidity</p>
+                  </div>
+                </div>
               </div>
             </div>
+
             <hr />
-            <div className="justify mb-4 flex flex-col items-center">
+            <div className="justify mb-4 flex flex-col items-center text-sm">
               Wind {responseData.wind.speed}kmh
               <p>{getDirection(responseData.wind.deg)} direction</p>
             </div>
