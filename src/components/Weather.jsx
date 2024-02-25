@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../assets/style/style.css";
 import { getDirection } from "../utils/get-directions";
+import { checkIfEmpty } from "../utils/check-if-empty";
 
 export const Weather = () => {
   let pin = require("../assets/images/other-icons/bx-map.svg").default;
@@ -16,7 +17,7 @@ export const Weather = () => {
     setInputValue(e.target.value);
   };
 
-  const handleApiCall = () => {
+  function handleApiCall() {
     const apiKey = "6e3f0299b90cb072866921e2fff0b929";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=${apiKey}&units=metric`;
 
@@ -29,7 +30,7 @@ export const Weather = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  };
+  }
 
   return (
     <section className="">
@@ -41,13 +42,17 @@ export const Weather = () => {
           <hr />
           <input
             className="mx-4 w-72 rounded border border-gray-500 p-2 text-center text-zinc-500 sm:w-48"
+            id="input"
             type="text"
             value={inputValue}
             onChange={handleInputChange}
             placeholder="Enter a city"
           />
           <button
-            onClick={handleApiCall}
+            onClick={() => {
+              checkIfEmpty();
+              handleApiCall();
+            }}
             className="mx-4 mb-4 w-72 rounded border border-gray-500 bg-blue-400 p-2 text-white sm:w-48"
           >
             Search
