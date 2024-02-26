@@ -19,8 +19,8 @@ export const Weather = () => {
   };
 
   function handleApiCall() {
-    const apiKey = "6e3f0299b90cb072866921e2fff0b929";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=${apiKey}&units=metric`;
+    const { REACT_APP_API_KEY } = process.env;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=${REACT_APP_API_KEY}&units=metric`;
 
     fetch(url)
       .then((response) => response.json())
