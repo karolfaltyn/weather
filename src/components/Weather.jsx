@@ -69,10 +69,7 @@ export const Weather = () => {
               <div className="mb-4 flex justify-center">
                 <img
                   className="w-28"
-                  src={getWetherIcon(
-                    responseData.weather[0].id,
-                    responseData.weather[0].icon,
-                  )}
+                  src={getWetherIcon(responseData.weather[0].icon)}
                   alt="weather icon"
                 />
               </div>
