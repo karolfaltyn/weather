@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../assets/style/style.css";
 import { getDirection } from "../utils/get-directions";
 import { checkIfEmpty } from "../utils/check-if-empty";
+import { getWetherIcon } from "../utils/get-wether-icon";
 
 export const Weather = () => {
   let pin = require("../assets/images/other-icons/bx-map.svg").default;
@@ -25,7 +26,6 @@ export const Weather = () => {
       .then((response) => response.json())
       .then((data) => {
         setResponseData(data);
-        console.log(data.weather[0].main);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -66,10 +66,15 @@ export const Weather = () => {
             </h1>
             <hr />
             <div className="mb-4 text-center">
-              <div className="mb-4">
-                ICON
-                {/* <img src="" alt="weather icon" /> */}
-                {responseData.weather.icon}
+              <div className="mb-4 flex justify-center">
+                <img
+                  className="w-28"
+                  src={getWetherIcon(
+                    responseData.weather[0].id,
+                    responseData.weather[0].icon,
+                  )}
+                  alt="weather icon"
+                />
               </div>
               <p className="bold mb-2 text-6xl font-semibold">
                 {Math.round(responseData.main.temp)}°C
