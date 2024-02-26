@@ -6,10 +6,10 @@ import { getWetherIcon } from "../utils/get-wether-icon";
 
 export const Weather = () => {
   let pin = require("../assets/images/other-icons/bx-map.svg").default;
-  let droplet =
-    require("../assets/images/other-icons/bxs-droplet-half.svg").default;
+  let droplet = require("../assets/images/other-icons/raindrop.svg").default;
   let thermometer =
-    require("../assets/images/other-icons/bxs-thermometer.svg").default;
+    require("../assets/images/other-icons/thermometer.svg").default;
+  let wind = require("../assets/images/other-icons/wind.svg").default;
 
   const [inputValue, setInputValue] = useState("");
   const [responseData, setResponseData] = useState(null);
@@ -89,7 +89,7 @@ export const Weather = () => {
 
             <div className="mx-4 flex justify-evenly">
               <div className="flex items-center justify-center">
-                <img src={thermometer} alt="thermometer" className="w-10" />
+                <img src={thermometer} alt="thermometer" className="w-12" />
                 <div>
                   <p className="text-md font-medium">
                     {Math.round(responseData.main.feels_like)}°C
@@ -100,7 +100,7 @@ export const Weather = () => {
 
               <div className="flex flex-col items-center">
                 <div className="flex items-center justify-center">
-                  <img src={droplet} alt="droplet" className="w-10" />
+                  <img src={droplet} alt="droplet" className="w-12" />
                   <div>
                     <p className="text-md font-medium">
                       {responseData.main.humidity}%
@@ -112,9 +112,18 @@ export const Weather = () => {
             </div>
 
             <hr />
-            <div className="justify mb-4 flex flex-col items-center text-sm">
-              Wind {responseData.wind.speed}kmh
-              <p>{getDirection(responseData.wind.deg)} direction</p>
+            <div className="justify mb-4 flex flex-col items-center">
+              <div className="flex items-center justify-center">
+                <img src={wind} alt="windsock" className="w-12" />
+                <div>
+                  <p className="text-md font-medium">
+                    {responseData.wind.speed} kmh
+                  </p>
+                  <p className="text-xs">
+                    {getDirection(responseData.wind.deg)} direction
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         )}
