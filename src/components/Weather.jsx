@@ -3,6 +3,7 @@ import "../assets/style/style.css";
 import { getDirection } from "../utils/get-directions";
 import { checkIfEmpty } from "../utils/check-if-empty";
 import { getWetherIcon } from "../utils/get-wether-icon";
+import { getLocation } from "../utils/get-location";
 
 export const Weather = () => {
   let pin = require("../assets/images/other-icons/bx-map.svg").default;
@@ -18,27 +19,59 @@ export const Weather = () => {
     setInputValue(e.target.value);
   };
 
-  function handleApiCall() {
+  async function handleApiCall() {
     const { REACT_APP_API_KEY } = process.env;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=${REACT_APP_API_KEY}&units=metric`;
+    try {
+      let apiUrl = "";
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setResponseData(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      const location = await getLocation();
+      const { latitude, longitude } = location;
+
+      apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${REACT_APP_API_KEY}&units=metric`;
+
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      setResponseData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  async function handleApiCallInput() {
+    const { REACT_APP_API_KEY } = process.env;
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=${REACT_APP_API_KEY}&units=metric`;
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setResponseData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }
 
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center p-12">
         <div className="flex flex-col gap-4 rounded bg-white shadow-md">
-          <h1 className="mx-4 mt-4 text-xl font-semibold text-blue-500">
-            Select Location
-          </h1>
+          <div className="flex justify-between">
+            <h1 className="mx-4 mt-4 text-xl font-semibold text-blue-500">
+              Select Location
+            </h1>
+            <div className="mx-4 mt-4 flex items-center justify-center">
+              <button
+                onClick={() => {
+                  handleApiCall();
+                }}
+              >
+                <div className="flex items-center justify-center">
+                  <img src={pin} alt="pin" />
+                </div>
+              </button>
+            </div>
+          </div>
           <hr />
           <input
             className="mx-4 w-72 rounded border border-gray-500 p-2 text-center text-zinc-500 sm:w-48"
@@ -51,7 +84,7 @@ export const Weather = () => {
           <button
             onClick={() => {
               checkIfEmpty();
-              handleApiCall();
+              handleApiCallInput();
             }}
             className="mx-4 mb-4 w-72 rounded border border-gray-500 bg-blue-400 p-2 text-white sm:w-48"
           >
