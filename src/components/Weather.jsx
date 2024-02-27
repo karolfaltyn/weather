@@ -83,7 +83,6 @@ export const Weather = () => {
                 <img src={pin} alt="pin" />
                 <p className="text-md font-semibold">{responseData.name}</p>
               </div>
-              {/* <p className="text-sm">Pressure: {responseData.main.pressure}mbar</p> */}
             </div>
             <hr />
 
