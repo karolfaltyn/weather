@@ -16,6 +16,14 @@ This Weather is a web application that allows users to get real-time weather inf
 
 To view the website online, visit [https://karolfaltyn.github.io/weather/](https://karolfaltyn.github.io/weather/).
 
+### Prerequisites
+
+1.  OpenWeather API Key:
+    
+    -   Obtain an API key from OpenWeather by signing up for a free account.
+  
+ ### Installation
+
 Follow these steps to set up the Weather App on your local machine:
 
 1. Clone the repository to your local machine:
@@ -33,14 +41,17 @@ Follow these steps to set up the Weather App on your local machine:
    ```bash
    npm install
    ```
+4. Set Up API Key:
+- Paste your actual OpenWeather API key into the `.env.build` file.
+- Rename the `.env.prod` file and rename it to `.env`.
 
-4. Start the development server:
+5. Start the development server:
 
    ```bash
    npm start
    ```
 
-5. 1.  Open your browser and visit  [http://localhost:3000](http://localhost:3000/)  to view the application.
+6. Open your browser and visit  [http://localhost:3000](http://localhost:3000/)  to view the application.
 
 ## Usage
 
