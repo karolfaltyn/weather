@@ -43,7 +43,7 @@ Follow these steps to set up the Weather App on your local machine:
    ```
 4. Set Up API Key:
 - Paste your actual OpenWeather API key into the `.env.build` file.
-- Rename the `.env.prod` file and rename it to `.env`.
+- Rename the `.env.prod` file to `.env`.
 
 5. Start the development server:
 
