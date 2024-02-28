@@ -7,7 +7,7 @@ export const WeatherBox2 = ({ responseData }) => {
         Weather Forecast
       </h1>
       <hr />
-      <div className="flex flex-col justify-around gap-2 text-center">
+      <div className="justify flex flex-col gap-2">
         <div className="flex justify-around text-center">
           <ForecastWeatherBox
             icon={responseData.list[1].weather[0].icon}
@@ -38,7 +38,7 @@ export const WeatherBox2 = ({ responseData }) => {
           />
         </div>
         <hr />
-        <div className="mb-4 flex justify-around text-center">
+        <div className="flex justify-around text-center">
           <ForecastWeatherBox
             icon={responseData.list[5].weather[0].icon}
             temp={responseData.list[5].main.temp}
