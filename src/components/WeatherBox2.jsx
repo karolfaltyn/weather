@@ -10,46 +10,46 @@ export const WeatherBox2 = ({ responseData }) => {
       <div className="justify flex flex-col gap-2">
         <div className="flex justify-around text-center">
           <ForecastWeatherBox
+            icon={responseData.list[0].weather[0].icon}
+            temp={responseData.list[0].main.temp}
+            feels_like={responseData.list[0].main.feels_like}
+            date={responseData.list[0].dt_txt}
+          />
+          <ForecastWeatherBox
             icon={responseData.list[1].weather[0].icon}
             temp={responseData.list[1].main.temp}
             feels_like={responseData.list[1].main.feels_like}
             date={responseData.list[1].dt_txt}
           />
+        </div>
+        <hr />
+        <div className="flex justify-around text-center">
           <ForecastWeatherBox
             icon={responseData.list[2].weather[0].icon}
             temp={responseData.list[2].main.temp}
             feels_like={responseData.list[2].main.feels_like}
             date={responseData.list[2].dt_txt}
           />
-        </div>
-        <hr />
-        <div className="flex justify-around text-center">
           <ForecastWeatherBox
             icon={responseData.list[3].weather[0].icon}
             temp={responseData.list[3].main.temp}
             feels_like={responseData.list[3].main.feels_like}
             date={responseData.list[3].dt_txt}
           />
+        </div>
+        <hr />
+        <div className="flex justify-around text-center">
           <ForecastWeatherBox
             icon={responseData.list[4].weather[0].icon}
             temp={responseData.list[4].main.temp}
             feels_like={responseData.list[4].main.feels_like}
             date={responseData.list[4].dt_txt}
           />
-        </div>
-        <hr />
-        <div className="flex justify-around text-center">
           <ForecastWeatherBox
             icon={responseData.list[5].weather[0].icon}
             temp={responseData.list[5].main.temp}
             feels_like={responseData.list[5].main.feels_like}
             date={responseData.list[5].dt_txt}
-          />
-          <ForecastWeatherBox
-            icon={responseData.list[6].weather[0].icon}
-            temp={responseData.list[6].main.temp}
-            feels_like={responseData.list[6].main.feels_like}
-            date={responseData.list[6].dt_txt}
           />
         </div>
       </div>
