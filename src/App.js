@@ -1,10 +1,10 @@
-import { Weather } from "./components/Weather";
+import { SearchBox } from "./components/SearchBox";
 
 
 export const App = () => {
     return (
         <main>
-            <Weather />
+            <SearchBox />
         </main>
     )
 }
