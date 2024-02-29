@@ -1,3 +1,4 @@
+
 # Weather 
 
 ## Overview
@@ -37,21 +38,26 @@ Follow these steps to set up the Weather App on your local machine:
    ```
 
 3. Install dependencies:
-
    ```bash
    npm install
    ```
-4. Set Up API Key:
+   
+4. Compile Tailwind code:
+    ```bash
+   npm run build:tailwind
+   ```
+
+6. Set Up API Key:
 - Paste your actual OpenWeather API key into the `.env.build` file.
 - Rename the `.env.prod` file to `.env`.
 
-5. Start the development server:
+7. Start the development server:
 
    ```bash
    npm start
    ```
 
-6. Open your browser and visit  [http://localhost:3000](http://localhost:3000/)  to view the application.
+8. Open your browser and visit  [http://localhost:3000](http://localhost:3000/)  to view the application.
 
 ## Usage
 
@@ -62,7 +68,7 @@ Follow these steps to set up the Weather App on your local machine:
    - Alternatively, you can manually enter a location in the search bar and press search.
 
 3. **View Weather Details:**
-   - Once the location is set, the app will display the current weather details for the specified location.
+   - Once the location is set, the app will display the current weather details and weather forecast for the specified location.
 
 
 ## Technologies Used
