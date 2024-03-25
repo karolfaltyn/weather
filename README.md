@@ -3,11 +3,11 @@
 
 ## Overview
 
-Weather is a web application that allows users to get real-time weather information based on their location or any specified location. The app utilizes the OpenWeather API to fetch weather data, providing users with current weather conditions, temperature, humidity, wind speed, and more.
+Weather is a web application that allows users to get real-time weather information based on their location or any specified location. The app utilizes the OpenWeatherMap API to fetch weather data, providing users with current weather conditions, temperature, humidity, wind speed, and more.
 
 ## Features
 
-- **Real-time Weather Data:** The app fetches the latest weather information from the OpenWeather API, ensuring that users receive up-to-date and accurate data.
+- **Real-time Weather Data:** The app fetches the latest weather information from the OpenWeatherMap API, ensuring that users receive up-to-date and accurate data.
 
 - **Location-based Weather:** Users can view the current weather conditions based on their device's geolocation or manually enter a specific location.
 
@@ -19,9 +19,9 @@ To view the website online, visit [https://karolfaltyn.github.io/weather/](https
 
 ### Prerequisites
 
-1.  OpenWeather API Key:
+1.  OpenWeatherMap API Key:
     
-    -   Obtain an API key from OpenWeather by signing up for a free account.
+    -   Obtain an API key from OpenWeatherMap by signing up for a free account.
   
  ### Installation
 
@@ -48,7 +48,7 @@ Follow these steps to set up the Weather App on your local machine:
    ```
 
 6. Set Up API Key:
-- Paste your actual OpenWeather API key into the `.env.build` file.
+- Paste your actual OpenWeatherMap API key into the `.env.build` file.
 - Rename the `.env.build` file to `.env`.
 
 7. Start the development server:
