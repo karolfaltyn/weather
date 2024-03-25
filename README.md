@@ -3,7 +3,7 @@
 
 ## Overview
 
-This Weather is a web application that allows users to get real-time weather information based on their location or any specified location. The app utilizes the OpenWeather API to fetch weather data, providing users with current weather conditions, temperature, humidity, wind speed, and more.
+Weather is a web application that allows users to get real-time weather information based on their location or any specified location. The app utilizes the OpenWeather API to fetch weather data, providing users with current weather conditions, temperature, humidity, wind speed, and more.
 
 ## Features
 
