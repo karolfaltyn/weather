@@ -11,7 +11,7 @@ export const WeatherBox = ({ responseData }) => {
   return (
     <div className="mt-16 flex flex-col gap-4 rounded bg-white shadow-md">
       <h1 className="mx-4 mt-4 w-72 text-xl font-semibold text-blue-500 sm:w-60 xs:w-48">
-        Weather App
+        Weather
       </h1>
       <hr />
       <div className="mb-4 text-center">

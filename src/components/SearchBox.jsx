@@ -6,7 +6,8 @@ import { checkIfEmpty } from "../utils/check-if-empty";
 import { getLocation } from "../utils/get-location";
 
 export const SearchBox = () => {
-  let pin = require("../assets/images/other-icons/bx-map.svg").default;
+  let pin = require("../assets/images/other-icons/bx-map-pin.svg").default;
+  let search = require("../assets/images/other-icons/bx-search.svg").default;
 
   const [inputValue, setInputValue] = useState("");
   const [responseData, setResponseData] = useState(null);
@@ -59,22 +60,9 @@ export const SearchBox = () => {
     <section className="">
       <div className="flex flex-col items-center justify-center p-12">
         <div className="flex flex-col gap-4 rounded bg-white shadow-md">
-          <div className="flex justify-between">
-            <h1 className="mx-4 mt-4 text-xl font-semibold text-blue-500">
-              Select Location
-            </h1>
-            <div className="mx-4 mt-4 flex items-center justify-center">
-              <button
-                onClick={() => {
-                  handleApiCallLocation();
-                }}
-              >
-                <div className="flex items-center justify-center">
-                  <img src={pin} alt="pin" />
-                </div>
-              </button>
-            </div>
-          </div>
+          <h1 className="mx-4 mt-4 text-xl font-semibold text-blue-500">
+            Select Location
+          </h1>
           <hr />
           <input
             className="mx-4 w-72 rounded border border-gray-500 p-2 text-center text-zinc-500 sm:w-60 xs:w-48"
@@ -84,15 +72,25 @@ export const SearchBox = () => {
             onChange={handleInputChange}
             placeholder="Enter a city"
           />
-          <button
-            onClick={() => {
-              checkIfEmpty();
-              handleApiCallInput();
-            }}
-            className="mx-4 mb-4 w-72 rounded border border-gray-500 bg-blue-400 p-2 text-white sm:w-60 xs:w-48"
-          >
-            Search
-          </button>
+          <div className="flex gap-4">
+            <button
+              onClick={() => {
+                checkIfEmpty();
+                handleApiCallInput();
+              }}
+              className="mb-4 ml-4 flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
+            >
+              <img src={search} alt="search" />
+            </button>
+            <button
+              onClick={() => {
+                handleApiCallLocation();
+              }}
+              className="mb-4 mr-4 flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
+            >
+              <img src={pin} alt="pin" />
+            </button>
+          </div>
         </div>
         <div className="sm:w-68 mx-4 flex justify-center gap-8 md:flex-col md:gap-1 xs:w-56">
           {responseData && <WeatherBox responseData={responseData} />}

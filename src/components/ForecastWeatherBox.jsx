@@ -3,7 +3,6 @@ import { getDayOfWeek } from "../utils/get-day-of-week";
 import { getHour } from "../utils/get-hour";
 
 export const ForecastWeatherBox = ({ icon, temp, feels_like, date }) => {
-  console.log(date);
   return (
     <div className="flex flex-col">
       <p className="text-xs ">{getDayOfWeek(date)}</p>
