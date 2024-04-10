@@ -77,6 +77,8 @@ Follow these steps to set up the Weather App on your local machine:
 - Tailwind
 - JavaScript
 - React
+- PostCSS
+- Material UI library
 
 ## License
 

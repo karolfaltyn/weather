@@ -5,6 +5,9 @@ import "../assets/style/style.css";
 import { checkIfEmpty } from "../utils/check-if-empty";
 import { getLocation } from "../utils/get-location";
 
+import { Button } from "@mui/material";
+import TextField from "@mui/material/TextField";
+
 export const SearchBox = () => {
   let pin = require("../assets/images/other-icons/bx-map-pin.svg").default;
   let search = require("../assets/images/other-icons/bx-search.svg").default;
@@ -64,32 +67,38 @@ export const SearchBox = () => {
             Select Location
           </h1>
           <hr />
-          <input
-            className="mx-4 w-72 rounded border border-gray-500 p-2 text-center text-zinc-500 sm:w-60 xs:w-48"
-            id="input"
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Enter a city"
-          />
-          <div className="flex gap-4">
-            <button
+          <div className="mx-4">
+            <TextField
+              label="Location"
+              variant="outlined"
+              className="w-72 rounded border border-gray-500 p-2 text-zinc-500 sm:w-60 xs:w-48"
+              id="input"
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Enter a city"
+            />
+          </div>
+          <div className="mx-4 mb-4 flex gap-4">
+            <Button
+              variant="contained"
               onClick={() => {
                 checkIfEmpty();
                 handleApiCallInput();
               }}
-              className="mb-4 ml-4 flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
+              className="flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
             >
               <img src={search} alt="search" />
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="outlined"
               onClick={() => {
                 handleApiCallLocation();
               }}
-              className="mb-4 mr-4 flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
+              className="flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
             >
               <img src={pin} alt="pin" />
-            </button>
+            </Button>
           </div>
         </div>
         <div className="sm:w-68 mx-4 flex justify-center gap-8 md:flex-col md:gap-1 xs:w-56">
