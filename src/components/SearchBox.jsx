@@ -60,52 +60,62 @@ export const SearchBox = () => {
   }
 
   return (
-    <section className="">
-      <div className="flex flex-col items-center justify-center p-12">
-        <div className="flex flex-col gap-4 rounded bg-white shadow-md">
-          <h1 className="mx-4 mt-4 text-xl font-semibold text-blue-500">
-            Select Location
-          </h1>
-          <hr />
-          <div className="mx-4">
-            <TextField
-              label="Location"
-              variant="outlined"
-              className="w-72 rounded border border-gray-500 p-2 text-zinc-500 sm:w-60 xs:w-48"
-              id="input"
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-              placeholder="Enter a city"
-            />
+    <div className="container">
+      <header>
+        <h1 className="flex justify-center pt-4 text-xl font-light text-white">
+          Check if you need an umbrella?
+        </h1>
+      </header>
+      <main>
+        <section>
+          <div className="mb-12 flex items-center justify-center pt-4">
+            <div className="mx-16 flex flex-col gap-4 rounded bg-[#ccc] bg-opacity-65 shadow-md">
+              <div className="px-4 pt-2">
+                <TextField
+                  label="Set Location"
+                  variant="standard"
+                  className="w-80 rounded border border-gray-500 p-2 text-zinc-500"
+                  id="input"
+                  type="text"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  placeholder="Enter a city"
+                />
+              </div>
+              <div className="flex gap-4 px-4 pb-4">
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    checkIfEmpty();
+                    handleApiCallInput();
+                  }}
+                  className="flex w-full items-center justify-center rounded border border-gray-500"
+                >
+                  <img src={search} alt="search" />
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={() => {
+                    handleApiCallLocation();
+                  }}
+                  className="flex w-full items-center justify-center rounded border border-gray-500 "
+                >
+                  <img src={pin} alt="pin" />
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="mx-4 mb-4 flex gap-4">
-            <Button
-              variant="contained"
-              onClick={() => {
-                checkIfEmpty();
-                handleApiCallInput();
-              }}
-              className="flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
-            >
-              <img src={search} alt="search" />
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={() => {
-                handleApiCallLocation();
-              }}
-              className="flex w-full items-center justify-center rounded border border-gray-500 bg-blue-400 p-2 text-white"
-            >
-              <img src={pin} alt="pin" />
-            </Button>
+
+          <div className="mb-16 flex flex-col gap-4">
+            <div className="flex justify-center">
+              {responseData && <WeatherBox responseData={responseData} />}
+            </div>
+            <div className="flex items-center justify-center">
+              {responseData2 && <WeatherBox2 responseData={responseData2} />}
+            </div>
           </div>
-        </div>
-        <div className="sm:w-68 mx-4 flex justify-center gap-8 md:flex-col md:gap-1 xs:w-56">
-          {responseData && <WeatherBox responseData={responseData} />}
-          {responseData2 && <WeatherBox2 responseData={responseData2} />}
-        </div>
-      </div>
-    </section>
+        </section>
+      </main>
+    </div>
   );
 };
