@@ -17,6 +17,7 @@
     "static/media/11d.svg": "/weather/static/media/11d.639df886958499f6f0fc.svg",
     "static/media/11n.svg": "/weather/static/media/11n.639df886958499f6f0fc.svg",
     "static/media/wind.svg": "/weather/static/media/wind.7666ea56edeecb3eff022542f7995c2d.svg",
+    "index.html": "/weather/index.html",
     "static/media/01n.svg": "/weather/static/media/01n.9ed9031b8fd64da63790.svg",
     "static/media/01d.svg": "/weather/static/media/01d.54288da67b71b4b19483.svg",
     "static/media/03d.svg": "/weather/static/media/03d.f6e6108ec3b4605bda2a.svg",
@@ -27,7 +28,6 @@
     "static/media/bx-map-pin.svg": "/weather/static/media/bx-map-pin.0b86e665fd0f936d3b4e61816bcbaf95.svg",
     "static/media/bx-map.svg": "/weather/static/media/bx-map.450c9449805fc84875db2990c34290c9.svg",
     "static/media/bx-search.svg": "/weather/static/media/bx-search.84a3210ddb171ab3931b24c396355a51.svg",
-    "index.html": "/weather/index.html",
     "main.fbe04263.css.map": "/weather/static/css/main.fbe04263.css.map",
     "main.aca38918.js.map": "/weather/static/js/main.aca38918.js.map"
   },
