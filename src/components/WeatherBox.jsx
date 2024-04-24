@@ -10,8 +10,8 @@ export const WeatherBox = ({ responseData }) => {
 
   return (
     <>
-      <div className="flex justify-center rounded bg-[#ccc] bg-opacity-65 p-2 shadow-md">
-        <div className="flex">
+      <div className="flex justify-center rounded bg-[#ccc] bg-opacity-65 p-2 shadow-md sm:flex-col sm:px-24">
+        <div className="flex justify-center">
           <div className="mb-2 text-center">
             <div className="flex items-center justify-center sm:flex-col">
               <img
@@ -61,9 +61,7 @@ export const WeatherBox = ({ responseData }) => {
                 <p className="text-md font-medium">
                   {Math.round(responseData.wind.speed)} kmh
                 </p>
-                <p className="text-xs">
-                  {getDirection(responseData.wind.deg)}
-                </p>
+                <p className="text-xs">{getDirection(responseData.wind.deg)}</p>
               </div>
             </div>
           </div>

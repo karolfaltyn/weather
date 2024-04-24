@@ -74,7 +74,7 @@ export const SearchBox = () => {
                 <TextField
                   label="Set Location"
                   variant="standard"
-                  className="w-80 rounded border border-gray-500 p-2 text-zinc-500"
+                  className="w-72 rounded border border-gray-500 p-2 text-zinc-500"
                   id="input"
                   type="text"
                   value={inputValue}
