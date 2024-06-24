@@ -8,10 +8,6 @@
   max-width: 1400px;
 }
 
-html {
-  min-height: 100%;
-  background: #1488cc;
-  background: -webkit-linear-gradient(0deg, #1488cc 0%, #2b32b2 100%);
-  background: linear-gradient(0deg, #1488cc 0%, #2b32b2 100%);
-  background-repeat: no-repeat;
+html{
+  background-color: #f4f4f4;
 }

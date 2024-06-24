@@ -1,8 +1,8 @@
 import { ForecastWeatherBox } from "./ForecastWeatherBox";
 
-export const WeatherBox2 = ({ responseData }) => {
+export const Forecast = ({ responseData }) => {
   return (
-    <div className="w-1/2 min-w-96 rounded bg-[#ccc] bg-opacity-65 p-4 shadow-md md:mt-0 xs:min-w-72">
+    <div className="w-1/2 min-w-96 rounded bg-white bg-opacity-65 p-4 shadow-md md:mt-0 xs:min-w-72">
       <div className="flex flex-wrap justify-around gap-4 text-center">
         <ForecastWeatherBox
           icon={responseData.list[0].weather[0].icon}

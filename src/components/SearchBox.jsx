@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { WeatherBox } from "./WeatherBox";
-import { WeatherBox2 } from "./WeatherBox2";
+import { Forecast } from "./Forecast";
 import "../assets/style/style.css";
 import { getLocation } from "../utils/get-location";
 import { Button } from "@mui/material";
@@ -40,9 +40,7 @@ export const SearchBox = () => {
       const data2 = await response2.json();
       setResponseData2(data2);
     } catch (error) {
-      setErrorMessage(
-        "Failed to use location, check if you have allowed the site to use it.",
-      );
+      setErrorMessage("Location could not be used.");
       console.error("Error fetching data:", error);
     }
   }
@@ -75,14 +73,14 @@ export const SearchBox = () => {
   return (
     <div className="container">
       <header>
-        <h1 className="flex justify-center pt-4 text-xl font-light text-white">
+        <h1 className="flex justify-center pt-4 text-xl font-light">
           Check if you need an umbrella?
         </h1>
       </header>
       <main>
         <section>
-          <div className="mb-12 flex items-center justify-center pt-4">
-            <div className="mx-16 flex flex-col gap-4 rounded bg-[#ccc] bg-opacity-65 shadow-md">
+          <div className="mb-12 flex flex-col items-center justify-center pt-4">
+            <div className="mx-16 flex flex-col gap-4 rounded bg-white bg-opacity-65 shadow-md">
               <div className="px-4 pt-2">
                 <TextField
                   label="Set Location"
@@ -106,21 +104,23 @@ export const SearchBox = () => {
                 <Button
                   variant="outlined"
                   onClick={handleApiCallLocation}
-                  className="flex w-full items-center justify-center rounded border border-gray-500 "
+                  className="flex w-full items-center justify-center rounded border border-gray-500"
                 >
                   <img src={pin} alt="pin" />
                 </Button>
               </div>
             </div>
-            <div className="text-red-600">{errorMessage}</div>
+            <div className="mt-6 text-center text-2xl font-semibold text-blue-900">
+              {errorMessage}
+            </div>
           </div>
 
           <div className="mb-16 flex flex-col gap-4">
-            <div className="flex justify-center">
+            <div className="mb-24 flex items-center justify-around gap-4 md:flex-col md:justify-center">
               {responseData && <WeatherBox responseData={responseData} />}
             </div>
             <div className="flex items-center justify-center">
-              {responseData2 && <WeatherBox2 responseData={responseData2} />}
+              {responseData2 && <Forecast responseData={responseData2} />}
             </div>
           </div>
         </section>

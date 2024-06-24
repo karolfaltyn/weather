@@ -10,12 +10,12 @@ export const WeatherBox = ({ responseData }) => {
 
   return (
     <>
-      <div className="flex justify-center rounded bg-[#ccc] bg-opacity-65 p-2 shadow-md sm:flex-col sm:px-24">
-        <div className="flex justify-center">
+      <div className="flex flex-col justify-center rounded bg-white bg-opacity-65 p-4 px-24 shadow-md sm:flex-col">
+        <div className="flex justify-center ">
           <div className="mb-2 text-center">
-            <div className="flex items-center justify-center sm:flex-col">
+            <div className="flex flex-col items-center justify-center">
               <img
-                className="w-28"
+                className="w-36"
                 src={getWetherIcon(responseData.weather[0].icon)}
                 alt="weather icon"
               />
@@ -33,8 +33,8 @@ export const WeatherBox = ({ responseData }) => {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center p-2">
-          <div className="flex items-center justify-center">
+        <div className="flex justify-center gap-6 p-2 md:flex-col">
+          <div className="flex items-center justify-center gap-1">
             <img src={thermometer} alt="thermometer" className="w-12" />
             <div>
               <p className="text-md font-medium">
@@ -44,7 +44,7 @@ export const WeatherBox = ({ responseData }) => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center gap-1">
             <img src={droplet} alt="droplet" className="w-12" />
             <div>
               <p className="text-md font-medium">
@@ -55,7 +55,7 @@ export const WeatherBox = ({ responseData }) => {
           </div>
 
           <div className="flex-col items-center">
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center gap-3">
               <img src={wind} alt="windsock" className="w-12" />
               <div>
                 <p className="text-md font-medium">
