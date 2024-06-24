@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { WeatherBox } from "./WeatherBox";
 import { WeatherBox2 } from "./WeatherBox2";
 import "../assets/style/style.css";
-import { checkIfEmpty } from "../utils/check-if-empty";
 import { getLocation } from "../utils/get-location";
-
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
@@ -15,6 +13,7 @@ export const SearchBox = () => {
   const [inputValue, setInputValue] = useState("");
   const [responseData, setResponseData] = useState(null);
   const [responseData2, setResponseData2] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -22,6 +21,8 @@ export const SearchBox = () => {
 
   async function handleApiCallLocation() {
     const { REACT_APP_API_KEY } = process.env;
+
+    setErrorMessage("");
     try {
       const location = await getLocation();
       const { latitude, longitude } = location;
@@ -30,31 +31,43 @@ export const SearchBox = () => {
       const url2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=${REACT_APP_API_KEY}&units=metric`;
 
       const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch weather data.");
       const data = await response.json();
       setResponseData(data);
 
       const response2 = await fetch(url2);
+      if (!response2.ok) throw new Error("Failed to fetch forecast data.");
       const data2 = await response2.json();
       setResponseData2(data2);
     } catch (error) {
+      setErrorMessage(
+        "Failed to use location, check if you have allowed the site to use it.",
+      );
       console.error("Error fetching data:", error);
     }
   }
 
   async function handleApiCallInput() {
     const { REACT_APP_API_KEY } = process.env;
+
+    setErrorMessage("");
     try {
+      if (inputValue.trim() === "") throw new Error("Type a city!");
+
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&APPID=${REACT_APP_API_KEY}&units=metric`;
       const url2 = `https://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&APPID=${REACT_APP_API_KEY}&units=metric`;
 
       const response = await fetch(url);
+      if (!response.ok) throw new Error("City not found.");
       const data = await response.json();
       setResponseData(data);
 
       const response2 = await fetch(url2);
+      if (!response2.ok) throw new Error("City not found.");
       const data2 = await response2.json();
       setResponseData2(data2);
     } catch (error) {
+      setErrorMessage(error.message);
       console.error("Error fetching data:", error);
     }
   }
@@ -85,25 +98,21 @@ export const SearchBox = () => {
               <div className="flex gap-4 px-4 pb-4">
                 <Button
                   variant="contained"
-                  onClick={() => {
-                    checkIfEmpty();
-                    handleApiCallInput();
-                  }}
+                  onClick={handleApiCallInput}
                   className="flex w-full items-center justify-center rounded border border-gray-500"
                 >
                   <img src={search} alt="search" />
                 </Button>
                 <Button
                   variant="outlined"
-                  onClick={() => {
-                    handleApiCallLocation();
-                  }}
+                  onClick={handleApiCallLocation}
                   className="flex w-full items-center justify-center rounded border border-gray-500 "
                 >
                   <img src={pin} alt="pin" />
                 </Button>
               </div>
             </div>
+            <div className="text-red-600">{errorMessage}</div>
           </div>
 
           <div className="mb-16 flex flex-col gap-4">

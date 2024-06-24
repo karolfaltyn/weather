@@ -16,7 +16,5 @@ export async function getLocation() {
     }
   }).catch((error) => {
     console.error("Error getting location:", error.message);
-    alert("Denied location access");
-    return window.location.reload();
   });
 }
