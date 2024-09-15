@@ -1,4 +1,5 @@
 
+
 # Weather 
 
 ## Overview
@@ -9,7 +10,7 @@ Weather is a web application that allows users to get real-time weather informat
 
 - **Real-time Weather Data:** The app fetches the latest weather information from the OpenWeatherMap API, ensuring that users receive up-to-date and accurate data.
 
-- **Location-based Weather:** Users can view the current weather conditions based on their device's geolocation or manually enter a specific location.
+- **Location-based Weather:** Users can view the current weather conditions based on their device's geolocation using the Geolocation API or by manually entering a specific location.
 
 - **Detailed Weather Information:** The app displays detailed weather information, including temperature, humidity, wind speed, and weather description.
 
@@ -48,8 +49,8 @@ Follow these steps to set up the Weather App on your local machine:
    ```
 
 6. Set Up API Key:
-- Paste your actual OpenWeatherMap API key into the `.env.build` file.
-- Rename the `.env.build` file to `.env`.
+   - Paste your actual OpenWeatherMap API key into the `.env.build` file.
+   - Rename the `.env.build` file to `.env`.
 
 7. Start the development server:
 
@@ -73,12 +74,17 @@ Follow these steps to set up the Weather App on your local machine:
 
 ## Technologies Used
 
-- HTML
-- Tailwind
-- JavaScript
-- React
-- PostCSS
-- Material UI library
+-   **React**: For building dynamic user interfaces.
+
+-   **JavaScript**: Core programming language for client-side functionality.
+
+-   **Tailwind CSS**: Utility-first CSS framework for custom, responsive design.
+
+-   **Material UI**: Comprehensive React UI framework for modern design.
+
+-   **API Integration**: Connecting and interacting with various APIs.
+
+-   **PostCSS**: CSS processor for enhanced styling and optimization.
 
 ## License
 
